@@ -1,0 +1,351 @@
+﻿<?xml version="1.0" encoding="utf-8"?><Database Name="SMS_Project" Class="LinqtoSqlDataContextDataContext" xmlns="http://schemas.microsoft.com/linqtosql/dbml/2007">
+  <Connection Mode="AppSettings" ConnectionString="Data Source=DESKTOP-PO8OKE0;Initial Catalog=SMS_Project;Integrated Security=True" SettingsObjectName="School_Management_System_pro.Properties.Settings" SettingsPropertyName="SMS_ProjectConnectionString" Provider="System.Data.SqlClient" />
+  <Table Name="dbo.tbl_AcademicDetail" Member="tbl_AcademicDetails">
+    <Type Name="tbl_AcademicDetail">
+      <Column Name="Id" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="studentid" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="drawingmarks" Type="System.Decimal" DbType="Decimal(5,2)" CanBeNull="true" />
+      <Column Name="enlishmarks" Type="System.Decimal" DbType="Decimal(5,2)" CanBeNull="true" />
+      <Column Name="urdumarks" Type="System.Decimal" DbType="Decimal(5,2)" CanBeNull="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.tbl_BookCategory" Member="tbl_BookCategories">
+    <Type Name="tbl_BookCategory">
+      <Column Name="Id" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="categoryname" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
+      <Column Name="bookclassificationid" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Association Name="tbl_BookCategory_tbl_BookEntry" Member="tbl_BookEntries" ThisKey="Id" OtherKey="categoryid" Type="tbl_BookEntry" />
+      <Association Name="tbl_BookCategory_tbl_BookSubCategory" Member="tbl_BookSubCategories" ThisKey="Id" OtherKey="categoryid" Type="tbl_BookSubCategory" />
+      <Association Name="tbl_BookClassification_tbl_BookCategory" Member="tbl_BookClassification" ThisKey="bookclassificationid" OtherKey="Id" Type="tbl_BookClassification" IsForeignKey="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.tbl_BookClassification" Member="tbl_BookClassifications">
+    <Type Name="tbl_BookClassification">
+      <Column Name="Id" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="classificationname" Type="System.String" DbType="VarChar(70)" CanBeNull="true" />
+      <Association Name="tbl_BookClassification_tbl_BookCategory" Member="tbl_BookCategories" ThisKey="Id" OtherKey="bookclassificationid" Type="tbl_BookCategory" />
+      <Association Name="tbl_BookClassification_tbl_BookEntry" Member="tbl_BookEntries" ThisKey="Id" OtherKey="bookclassificationid" Type="tbl_BookEntry" />
+      <Association Name="tbl_BookClassification_tbl_BookSubCategory" Member="tbl_BookSubCategories" ThisKey="Id" OtherKey="bookclassificationid" Type="tbl_BookSubCategory" />
+    </Type>
+  </Table>
+  <Table Name="dbo.tbl_BookEntry" Member="tbl_BookEntries">
+    <Type Name="tbl_BookEntry">
+      <Column Name="Id" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="booktitle" Type="System.String" DbType="VarChar(70)" CanBeNull="true" />
+      <Column Name="bookclassificationid" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="categoryid" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="subcategoryid" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="isbn" Type="System.String" DbType="VarChar(20)" CanBeNull="true" />
+      <Column Name="barcode" Type="System.Int64" DbType="BigInt" CanBeNull="true" />
+      <Column Name="edition" Type="System.String" DbType="NVarChar(10)" CanBeNull="true" />
+      <Column Name="publisher" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
+      <Column Name="publishing_year" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="language" Type="System.String" DbType="VarChar(20)" CanBeNull="true" />
+      <Column Name="no_of_pages" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="bookposition" Type="System.String" DbType="VarChar(15)" CanBeNull="true" />
+      <Column Name="condition" Type="System.String" DbType="VarChar(10)" CanBeNull="true" />
+      <Column Name="section" Type="System.String" DbType="VarChar(20)" CanBeNull="true" />
+      <Column Name="billno" Type="System.String" DbType="VarChar(15)" CanBeNull="true" />
+      <Column Name="billdate" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
+      <Column Name="price" Type="System.Decimal" DbType="Decimal(18,2)" CanBeNull="true" />
+      <Column Name="supplierid" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Association Name="tbl_BookEntry_tbl_Inventory" Member="tbl_Inventories" ThisKey="Id" OtherKey="bookid" Type="tbl_Inventory" />
+      <Association Name="tbl_BookCategory_tbl_BookEntry" Member="tbl_BookCategory" ThisKey="categoryid" OtherKey="Id" Type="tbl_BookCategory" IsForeignKey="true" />
+      <Association Name="tbl_BookClassification_tbl_BookEntry" Member="tbl_BookClassification" ThisKey="bookclassificationid" OtherKey="Id" Type="tbl_BookClassification" IsForeignKey="true" />
+      <Association Name="tbl_BookSubCategory_tbl_BookEntry" Member="tbl_BookSubCategory" ThisKey="subcategoryid" OtherKey="Id" Type="tbl_BookSubCategory" IsForeignKey="true" />
+      <Association Name="tbl_BookSupplier_tbl_BookEntry" Member="tbl_BookSupplier" ThisKey="supplierid" OtherKey="Id" Type="tbl_BookSupplier" IsForeignKey="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.tbl_BookPurchaseInvoice" Member="tbl_BookPurchaseInvoices">
+    <Type Name="tbl_BookPurchaseInvoice">
+      <Column Name="Id" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="bookid" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="quantity" Type="System.Int64" DbType="BigInt" CanBeNull="true" />
+      <Column Name="rate" Type="System.Decimal" DbType="Decimal(18,2)" CanBeNull="true" />
+      <Column Name="price" Type="System.Decimal" DbType="Decimal(18,2)" CanBeNull="true" />
+      <Column Name="purchasedate" Type="System.DateTime" DbType="Date" CanBeNull="true" />
+      <Column Name="grandtotal" Type="System.Decimal" DbType="Decimal(18,0)" CanBeNull="true" />
+      <Column Name="totalquantity" Type="System.Int64" DbType="BigInt" CanBeNull="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.tbl_BookSaleInvoice" Member="tbl_BookSaleInvoices">
+    <Type Name="tbl_BookSaleInvoice">
+      <Column Name="Id" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="Studentid" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="bookid" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="quantity" Type="System.Int64" DbType="BigInt" CanBeNull="true" />
+      <Column Name="rate" Type="System.Decimal" DbType="Decimal(18,0)" CanBeNull="true" />
+      <Column Name="price" Type="System.Decimal" DbType="Decimal(18,0)" CanBeNull="true" />
+      <Column Name="grandtotal" Type="System.Decimal" DbType="Decimal(18,0)" CanBeNull="true" />
+      <Column Name="totalpaid" Type="System.Decimal" DbType="Decimal(18,0)" CanBeNull="true" />
+      <Column Name="outstanding" Type="System.Decimal" DbType="Decimal(18,0)" CanBeNull="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.tbl_BookSubCategory" Member="tbl_BookSubCategories">
+    <Type Name="tbl_BookSubCategory">
+      <Column Name="Id" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="subcategoryname" Type="System.String" DbType="VarChar(70)" CanBeNull="true" />
+      <Column Name="categoryid" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="bookclassificationid" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Association Name="tbl_BookSubCategory_tbl_BookEntry" Member="tbl_BookEntries" ThisKey="Id" OtherKey="subcategoryid" Type="tbl_BookEntry" />
+      <Association Name="tbl_BookCategory_tbl_BookSubCategory" Member="tbl_BookCategory" ThisKey="categoryid" OtherKey="Id" Type="tbl_BookCategory" IsForeignKey="true" />
+      <Association Name="tbl_BookClassification_tbl_BookSubCategory" Member="tbl_BookClassification" ThisKey="bookclassificationid" OtherKey="Id" Type="tbl_BookClassification" IsForeignKey="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.tbl_BookSupplier" Member="tbl_BookSuppliers">
+    <Type Name="tbl_BookSupplier">
+      <Column Name="Id" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="suppliername" Type="System.String" DbType="VarChar(30)" CanBeNull="true" />
+      <Column Name="suppliertype" Type="System.String" DbType="VarChar(30)" CanBeNull="true" />
+      <Column Name="address" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
+      <Column Name="contactno" Type="System.String" DbType="VarChar(15)" CanBeNull="true" />
+      <Column Name="email" Type="System.String" DbType="VarChar(15)" CanBeNull="true" />
+      <Column Name="remarks" Type="System.String" DbType="VarChar(100)" CanBeNull="true" />
+      <Association Name="tbl_BookSupplier_tbl_BookEntry" Member="tbl_BookEntries" ThisKey="Id" OtherKey="supplierid" Type="tbl_BookEntry" />
+      <Association Name="tbl_BookSupplier_tbl_Inventory" Member="tbl_Inventories" ThisKey="Id" OtherKey="supplierid" Type="tbl_Inventory" />
+    </Type>
+  </Table>
+  <Table Name="dbo.tbl_Bus_Installment" Member="tbl_Bus_Installments">
+    <Type Name="tbl_Bus_Installment">
+      <Column Name="Id" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="installment" Type="System.String" DbType="VarChar(15)" CanBeNull="true" />
+      <Column Name="charges" Type="System.Decimal" DbType="Decimal(18,2)" CanBeNull="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.tbl_BusEntry" Member="tbl_BusEntries">
+    <Type Name="tbl_BusEntry">
+      <Column Name="Id" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="drivername" Type="System.String" DbType="VarChar(30)" CanBeNull="true" />
+      <Column Name="contactno" Type="System.String" DbType="VarChar(30)" CanBeNull="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.tbl_BusLocationEntry" Member="tbl_BusLocationEntries">
+    <Type Name="tbl_BusLocationEntry">
+      <Column Name="Id" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="locationname" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.tbl_Class" Member="tbl_Classes">
+    <Type Name="tbl_Class">
+      <Column Name="Id" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="classname" Type="System.String" DbType="VarChar(6)" CanBeNull="true" />
+      <Association Name="tbl_Class_tbl_Class_Section" Member="tbl_Class_Sections" ThisKey="Id" OtherKey="classid" Type="tbl_Class_Section" />
+      <Association Name="tbl_Class_tbl_ClassFeesEntry" Member="tbl_ClassFeesEntries" ThisKey="Id" OtherKey="classid" Type="tbl_ClassFeesEntry" />
+      <Association Name="tbl_Class_tbl_StudentAttendence" Member="tbl_StudentAttendences" ThisKey="Id" OtherKey="classid" Type="tbl_StudentAttendence" />
+      <Association Name="tbl_Class_tbl_Subject" Member="tbl_Subjects" ThisKey="Id" OtherKey="classid" Type="tbl_Subject" />
+    </Type>
+  </Table>
+  <Table Name="dbo.tbl_Class_Section" Member="tbl_Class_Sections">
+    <Type Name="tbl_Class_Section">
+      <Column Name="Id" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="classid" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="sectionid" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Association Name="tbl_Class_tbl_Class_Section" Member="tbl_Class" ThisKey="classid" OtherKey="Id" Type="tbl_Class" IsForeignKey="true" />
+      <Association Name="tbl_Section_tbl_Class_Section" Member="tbl_Section" ThisKey="sectionid" OtherKey="Id" Type="tbl_Section" IsForeignKey="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.tbl_ClassFeesEntry" Member="tbl_ClassFeesEntries">
+    <Type Name="tbl_ClassFeesEntry">
+      <Column Name="Id" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="classid" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="feeid" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="month" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
+      <Column Name="feeamount" Type="System.Decimal" DbType="Money" CanBeNull="true" />
+      <Association Name="tbl_Class_tbl_ClassFeesEntry" Member="tbl_Class" ThisKey="classid" OtherKey="Id" Type="tbl_Class" IsForeignKey="true" />
+      <Association Name="tbl_FeeType_tbl_ClassFeesEntry" Member="tbl_FeeType" ThisKey="feeid" OtherKey="Id" Type="tbl_FeeType" IsForeignKey="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.tbl_EmployeeDesignation" Member="tbl_EmployeeDesignations">
+    <Type Name="tbl_EmployeeDesignation">
+      <Column Name="Id" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="designationname" Type="System.String" DbType="VarChar(30)" CanBeNull="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.tbl_EmployeeRegistration" Member="tbl_EmployeeRegistrations">
+    <Type Name="tbl_EmployeeRegistration">
+      <Column Name="Id" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="teachername" Type="System.String" DbType="VarChar(30)" CanBeNull="true" />
+      <Column Name="gender" Type="System.String" DbType="VarChar(10)" CanBeNull="true" />
+      <Column Name="status" Type="System.String" DbType="VarChar(15)" CanBeNull="true" />
+      <Column Name="dob" Type="System.DateTime" DbType="Date" CanBeNull="true" />
+      <Column Name="fathername" Type="System.String" DbType="VarChar(30)" CanBeNull="true" />
+      <Column Name="parmenentaddress" Type="System.String" DbType="VarChar(30)" CanBeNull="true" />
+      <Column Name="phoneno" Type="System.String" DbType="VarChar(15)" CanBeNull="true" />
+      <Column Name="contactno" Type="System.String" DbType="VarChar(15)" CanBeNull="true" />
+      <Column Name="subjectid" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="dateofjoining" Type="System.DateTime" DbType="Date" CanBeNull="true" />
+      <Column Name="experience" Type="System.String" DbType="VarChar(15)" CanBeNull="true" />
+      <Column Name="email" Type="System.String" DbType="VarChar(20)" CanBeNull="true" />
+      <Column Name="basicsalary" Type="System.Decimal" DbType="Decimal(18,2)" CanBeNull="true" />
+      <Column Name="destination" Type="System.String" DbType="VarChar(20)" CanBeNull="true" />
+      <Column Name="qualification" Type="System.String" DbType="VarChar(20)" CanBeNull="true" />
+      <Column Name="classid" Type="System.Int32" DbType="Int" CanBeNull="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.tbl_ExamEntry" Member="tbl_ExamEntries">
+    <Type Name="tbl_ExamEntry">
+      <Column Name="Id" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="examname" Type="System.String" DbType="VarChar(20)" CanBeNull="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.tbl_FeeType" Member="tbl_FeeTypes">
+    <Type Name="tbl_FeeType">
+      <Column Name="Id" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="feename" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
+      <Association Name="tbl_FeeType_tbl_ClassFeesEntry" Member="tbl_ClassFeesEntries" ThisKey="Id" OtherKey="feeid" Type="tbl_ClassFeesEntry" />
+    </Type>
+  </Table>
+  <Table Name="dbo.tbl_Inventory" Member="tbl_Inventories">
+    <Type Name="tbl_Inventory">
+      <Column Name="Id" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="bookid" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="openingqty" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="date" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
+      <Column Name="supplierid" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="saleprice" Type="System.Decimal" DbType="Decimal(18,2)" CanBeNull="true" />
+      <Column Name="purchaseprice" Type="System.Decimal" DbType="Decimal(18,2)" CanBeNull="true" />
+      <Association Name="tbl_BookEntry_tbl_Inventory" Member="tbl_BookEntry" ThisKey="bookid" OtherKey="Id" Type="tbl_BookEntry" IsForeignKey="true" />
+      <Association Name="tbl_BookSupplier_tbl_Inventory" Member="tbl_BookSupplier" ThisKey="supplierid" OtherKey="Id" Type="tbl_BookSupplier" IsForeignKey="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.tbl_SchoolEntry" Member="tbl_SchoolEntries">
+    <Type Name="tbl_SchoolEntry">
+      <Column Name="Id" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="schoolname" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
+      <Column Name="city" Type="System.String" DbType="VarChar(20)" CanBeNull="true" />
+      <Column Name="country" Type="System.String" DbType="VarChar(20)" CanBeNull="true" />
+      <Column Name="adress" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
+      <Column Name="contactno" Type="System.String" DbType="VarChar(15)" CanBeNull="true" />
+      <Column Name="email" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
+      <Column Name="websites" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
+      <Column Name="bankname" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
+      <Column Name="bankaddress" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
+      <Column Name="accountno" Type="System.Int64" DbType="BigInt" CanBeNull="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.tbl_Section" Member="tbl_Sections">
+    <Type Name="tbl_Section">
+      <Column Name="Id" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="sectionname" Type="System.String" DbType="VarChar(3)" CanBeNull="true" />
+      <Association Name="tbl_Section_tbl_Class_Section" Member="tbl_Class_Sections" ThisKey="Id" OtherKey="sectionid" Type="tbl_Class_Section" />
+      <Association Name="tbl_Section_tbl_StudentAttendence" Member="tbl_StudentAttendences" ThisKey="Id" OtherKey="sectionid" Type="tbl_StudentAttendence" />
+    </Type>
+  </Table>
+  <Table Name="dbo.tbl_Session" Member="tbl_Sessions">
+    <Type Name="tbl_Session">
+      <Column Name="Id" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="session" Type="System.String" DbType="NVarChar(15)" CanBeNull="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.tbl_StudentAcademicProfile" Member="tbl_StudentAcademicProfiles">
+    <Type Name="tbl_StudentAcademicProfile">
+      <Column Name="Id" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="classid" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="sectionid" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="month" Type="System.String" DbType="VarChar(15)" CanBeNull="true" />
+      <Column Name="year" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="studentid" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="classwise" Type="System.Boolean" DbType="Bit" CanBeNull="true" />
+      <Column Name="studentwise" Type="System.Boolean" DbType="Bit" CanBeNull="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.tbl_StudentAttendence" Member="tbl_StudentAttendences">
+    <Type Name="tbl_StudentAttendence">
+      <Column Name="Id" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="studentid" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="classid" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="sectionid" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="month" Type="System.String" DbType="VarChar(15)" CanBeNull="true" />
+      <Column Name="year" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="[1]" Member="_1" Type="System.String" DbType="Char(2)" CanBeNull="true" />
+      <Column Name="[2]" Member="_2" Type="System.String" DbType="Char(2)" CanBeNull="true" />
+      <Column Name="[3]" Member="_3" Type="System.String" DbType="Char(2)" CanBeNull="true" />
+      <Column Name="[4]" Member="_4" Type="System.String" DbType="Char(2)" CanBeNull="true" />
+      <Column Name="[5]" Member="_5" Type="System.String" DbType="Char(2)" CanBeNull="true" />
+      <Column Name="[6]" Member="_6" Type="System.String" DbType="Char(2)" CanBeNull="true" />
+      <Column Name="[7]" Member="_7" Type="System.String" DbType="Char(2)" CanBeNull="true" />
+      <Column Name="[8]" Member="_8" Type="System.String" DbType="Char(2)" CanBeNull="true" />
+      <Column Name="[9]" Member="_9" Type="System.String" DbType="Char(2)" CanBeNull="true" />
+      <Column Name="[10]" Member="_10" Type="System.String" DbType="Char(2)" CanBeNull="true" />
+      <Column Name="[11]" Member="_11" Type="System.String" DbType="Char(2)" CanBeNull="true" />
+      <Column Name="[12]" Member="_12" Type="System.String" DbType="Char(2)" CanBeNull="true" />
+      <Column Name="[13]" Member="_13" Type="System.String" DbType="Char(2)" CanBeNull="true" />
+      <Column Name="[14]" Member="_14" Type="System.String" DbType="Char(2)" CanBeNull="true" />
+      <Column Name="[15]" Member="_15" Type="System.String" DbType="Char(2)" CanBeNull="true" />
+      <Column Name="[16]" Member="_16" Type="System.String" DbType="Char(2)" CanBeNull="true" />
+      <Column Name="[17]" Member="_17" Type="System.String" DbType="Char(2)" CanBeNull="true" />
+      <Column Name="[18]" Member="_18" Type="System.String" DbType="Char(2)" CanBeNull="true" />
+      <Column Name="[19]" Member="_19" Type="System.String" DbType="Char(2)" CanBeNull="true" />
+      <Column Name="[20]" Member="_20" Type="System.String" DbType="Char(2)" CanBeNull="true" />
+      <Column Name="[21]" Member="_21" Type="System.String" DbType="Char(2)" CanBeNull="true" />
+      <Column Name="[22]" Member="_22" Type="System.String" DbType="Char(2)" CanBeNull="true" />
+      <Column Name="[23]" Member="_23" Type="System.String" DbType="Char(2)" CanBeNull="true" />
+      <Column Name="[24]" Member="_24" Type="System.String" DbType="Char(2)" CanBeNull="true" />
+      <Column Name="[25]" Member="_25" Type="System.String" DbType="Char(2)" CanBeNull="true" />
+      <Column Name="[26]" Member="_26" Type="System.String" DbType="Char(2)" CanBeNull="true" />
+      <Column Name="[27]" Member="_27" Type="System.String" DbType="Char(2)" CanBeNull="true" />
+      <Column Name="[28]" Member="_28" Type="System.String" DbType="Char(2)" CanBeNull="true" />
+      <Column Name="[29]" Member="_29" Type="System.String" DbType="Char(2)" CanBeNull="true" />
+      <Column Name="[30]" Member="_30" Type="System.String" DbType="Char(2)" CanBeNull="true" />
+      <Column Name="[31]" Member="_31" Type="System.String" DbType="Char(2)" CanBeNull="true" />
+      <Association Name="tbl_Class_tbl_StudentAttendence" Member="tbl_Class" ThisKey="classid" OtherKey="Id" Type="tbl_Class" IsForeignKey="true" />
+      <Association Name="tbl_Section_tbl_StudentAttendence" Member="tbl_Section" ThisKey="sectionid" OtherKey="Id" Type="tbl_Section" IsForeignKey="true" />
+      <Association Name="tbl_StudentRegistration_tbl_StudentAttendence" Member="tbl_StudentRegistration" ThisKey="studentid" OtherKey="Id" Type="tbl_StudentRegistration" IsForeignKey="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.tbl_StudentRegistration" Member="tbl_StudentRegistrations">
+    <Type Name="tbl_StudentRegistration">
+      <Column Name="Id" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="gr_no" Type="System.String" DbType="VarChar(20)" CanBeNull="true" />
+      <Column Name="studentname" Type="System.String" DbType="VarChar(20)" CanBeNull="true" />
+      <Column Name="fathername" Type="System.String" DbType="VarChar(20)" CanBeNull="true" />
+      <Column Name="gender" Type="System.String" DbType="VarChar(10)" CanBeNull="true" />
+      <Column Name="classid" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="sectionid" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="contactno" Type="System.String" DbType="VarChar(15)" CanBeNull="true" />
+      <Column Name="telephoneno" Type="System.String" DbType="VarChar(15)" CanBeNull="true" />
+      <Column Name="previousschoolname" Type="System.String" DbType="VarChar(30)" CanBeNull="true" />
+      <Column Name="DOB" Type="System.DateTime" DbType="Date" CanBeNull="true" />
+      <Column Name="Address" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
+      <Column Name="age" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="photo" Type="System.Data.Linq.Binary" DbType="Image" CanBeNull="true" UpdateCheck="Never" />
+      <Column Name="newschoolid" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="admissiondate" Type="System.DateTime" DbType="Date" CanBeNull="true" />
+      <Column Name="previousclassid" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="inactive" Type="System.Boolean" DbType="Bit" CanBeNull="true" />
+      <Association Name="tbl_StudentRegistration_tbl_StudentAttendence" Member="tbl_StudentAttendences" ThisKey="Id" OtherKey="studentid" Type="tbl_StudentAttendence" />
+    </Type>
+  </Table>
+  <Table Name="dbo.tbl_Subject" Member="tbl_Subjects">
+    <Type Name="tbl_Subject">
+      <Column Name="Id" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="subjectname" Type="System.String" DbType="NVarChar(15)" CanBeNull="true" />
+      <Column Name="classid" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="time" Type="System.TimeSpan" DbType="Time" CanBeNull="true" />
+      <Association Name="tbl_Class_tbl_Subject" Member="tbl_Class" ThisKey="classid" OtherKey="Id" Type="tbl_Class" IsForeignKey="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.tbl_TimeTable" Member="tbl_TimeTables">
+    <Type Name="tbl_TimeTable">
+      <Column Name="Id" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="classid" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="subjectid" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="sectionid" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="timing" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="day" Type="System.String" DbType="VarChar(15)" CanBeNull="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.tbl_UserRegistration" Member="tbl_UserRegistrations">
+    <Type Name="tbl_UserRegistration">
+      <Column Name="Id" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="firstname" Type="System.String" DbType="VarChar(30)" CanBeNull="true" />
+      <Column Name="lastname" Type="System.String" DbType="VarChar(30)" CanBeNull="true" />
+      <Column Name="username" Type="System.String" DbType="VarChar(20)" CanBeNull="true" />
+      <Column Name="password" Type="System.String" DbType="VarChar(20)" CanBeNull="true" />
+      <Column Name="usertype" Type="System.String" DbType="VarChar(20)" CanBeNull="true" />
+      <Column Name="mobileno" Type="System.String" DbType="VarChar(15)" CanBeNull="true" />
+      <Column Name="email" Type="System.String" DbType="VarChar(30)" CanBeNull="true" />
+      <Column Name="inactive" Type="System.Boolean" DbType="Bit" CanBeNull="true" />
+    </Type>
+  </Table>
+</Database>
