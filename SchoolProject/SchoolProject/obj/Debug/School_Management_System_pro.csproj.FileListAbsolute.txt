@@ -17,3 +17,9 @@ C:\Users\HSNFZ\Documents\Visual Studio 2012\Projects\School_Management_System_pr
 C:\Users\HSNFZ\Documents\Visual Studio 2012\Projects\School_Management_System_pro\School_Management_System_pro\bin\Debug\Bunifu.UI.WinForm.BunifuShadowPanel.dll
 C:\Users\HSNFZ\Documents\Visual Studio 2012\Projects\School_Management_System_pro\School_Management_System_pro\bin\Debug\Bunifu.UI.WinForms.BunifuPictureBox.dll
 C:\Users\HSNFZ\Documents\Visual Studio 2012\Projects\School_Management_System_pro\School_Management_System_pro\obj\Debug\School_Management_System_pro.Forms.frmPanel.resources
+C:\Users\HSNFZ\Downloads\Compressed\cmder\User\Project\School_Management_System_pro\School_Management_System_pro\bin\Debug\School_Management_System_pro.exe.config
+C:\Users\HSNFZ\Downloads\Compressed\cmder\User\Project\School_Management_System_pro\School_Management_System_pro\obj\Debug\School_Management_System_pro.exe
+C:\Users\HSNFZ\Downloads\Compressed\cmder\User\Project\School_Management_System_pro\School_Management_System_pro\obj\Debug\School_Management_System_pro.pdb
+E:\User\Project\School_Management_System_pro\School_Management_System_pro\bin\Debug\School_Management_System_pro.exe.config
+E:\User\Project\School_Management_System_pro\School_Management_System_pro\obj\Debug\School_Management_System_pro.exe
+E:\User\Project\School_Management_System_pro\School_Management_System_pro\obj\Debug\School_Management_System_pro.pdb

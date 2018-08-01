@@ -1,0 +1,14 @@
+E:\User\Project\School_Management_System_pro\School_Management_System_pro\bin\Debug\School_Management_System_pro.exe.config
+E:\User\Project\School_Management_System_pro\School_Management_System_pro\bin\Debug\School_Management_System_pro.exe
+E:\User\Project\School_Management_System_pro\School_Management_System_pro\bin\Debug\School_Management_System_pro.pdb
+E:\User\Project\School_Management_System_pro\School_Management_System_pro\bin\Debug\Telerik.WinControls.UI.xml
+E:\User\Project\School_Management_System_pro\School_Management_System_pro\obj\Debug\SchoolProject.csprojResolveAssemblyReference.cache
+E:\User\Project\School_Management_System_pro\School_Management_System_pro\obj\Debug\School_Management_System_pro.Forms.frmBase.resources
+E:\User\Project\School_Management_System_pro\School_Management_System_pro\obj\Debug\School_Management_System_pro.Forms.frmMain.resources
+E:\User\Project\School_Management_System_pro\School_Management_System_pro\obj\Debug\School_Management_System_pro.Forms.frmPanel.resources
+E:\User\Project\School_Management_System_pro\School_Management_System_pro\obj\Debug\School_Management_System_pro.Forms.frmSchoolEntry.resources
+E:\User\Project\School_Management_System_pro\School_Management_System_pro\obj\Debug\School_Management_System_pro.Properties.Resources.resources
+E:\User\Project\School_Management_System_pro\School_Management_System_pro\obj\Debug\SchoolProject.csproj.GenerateResource.Cache
+E:\User\Project\School_Management_System_pro\School_Management_System_pro\obj\Debug\School_Management_System_pro.exe.licenses
+E:\User\Project\School_Management_System_pro\School_Management_System_pro\obj\Debug\School_Management_System_pro.exe
+E:\User\Project\School_Management_System_pro\School_Management_System_pro\obj\Debug\School_Management_System_pro.pdb
