@@ -1,0 +1,8 @@
+<resources>
+    <string name="app_name">LogInApp</string>
+
+    <string-array name="type_spiner_items">
+        <item>Revenue</item>
+        <item>Expense</item>
+    </string-array>
+</resources>
